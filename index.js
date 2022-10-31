@@ -1,8 +1,10 @@
 import Methods from './modules/utils.js';
+import { DateTime } from './modules/luxon.js';
 
 const addTitle = document.querySelector('#addTitle');
 const addAuthor = document.querySelector('#addAuthor');
 const addForm = document.querySelector('#addBook');
+const showCurrentTime = document.querySelector('.current-time');
 
 const listMenu = document.querySelector('#list-section');
 const addBookMenu = document.querySelector('#add-book-section');
@@ -42,6 +44,13 @@ contactMenu.addEventListener('click', (e) => {
 	addBookSection.style.display = 'none';
 });
 
+const showDateTime = () => {
+	const time = DateTime.now();
+	const curTime = time.toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
+
+	showCurrentTime.textContent = curTime;
+};
+
 window.onload = () => {
 	if (localStorage.getItem('storedBookData') !== null && localStorage.getItem('storedBookData') !== '[]') {
 		Methods.showBooks();
@@ -49,4 +58,6 @@ window.onload = () => {
 		addBookSection.style.display = 'none';
 		contactSection.style.display = 'none';
 	}
+
+	setInterval(showDateTime, 1000);
 };
