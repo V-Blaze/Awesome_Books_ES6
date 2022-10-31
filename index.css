@@ -148,7 +148,7 @@
 
   .success-msg {
     align-self: center;
-    display: flex;
+    display: none;
     justify-content: center;
     gap: 15px;
     width: 30%;

@@ -54,11 +54,23 @@ export default class Methods {
 		this.addBtnRemoveEvent();
 	};
 
+	static successMsg = () => {
+		let myTimeout;
+		const success = document.querySelector('.success-msg');
+		success.style.display = 'flex';
+
+		myTimeout = setTimeout(() => {
+			success.style.display = 'none';
+			clearTimeout(myTimeout);
+		}, 2000);
+	};
+
 	static addBook = (title, author) => {
 		let bookCollection = this.getBookFromStorage();
 		let newbook = new Book(title, author);
 
 		bookCollection.push(newbook);
 		this.addBookToStorage(bookCollection);
+		this.successMsg();
 	};
 }
