@@ -1,10 +1,6 @@
 import Book from './book.js';
 
 export default class Methods {
-	constructor() {
-		this.bookCollection = [];
-	}
-
 	static getBookFromStorage = () => {
 		let bookCollection;
 

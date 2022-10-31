@@ -83,6 +83,7 @@
   
   .formSection {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin: 0 auto;
     margin-top: 5%;
@@ -143,6 +144,24 @@
     box-shadow: 3px 3px red;
     transform: scale(1.15);
     transition: 0.5s;
+  }
+
+  .success-msg {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 30%;
+    margin: 3% auto;
+    background-color: green;
+    border-radius: 5px;
+  }
+
+  .success-msg span {
+  padding: 2%;
+  color: white;
+  font-weight: bold;
+  font-style: italic;
   }
   
   .contact {

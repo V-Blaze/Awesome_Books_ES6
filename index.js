@@ -4,6 +4,13 @@ const addTitle = document.querySelector('#addTitle');
 const addAuthor = document.querySelector('#addAuthor');
 const addForm = document.querySelector('#addBook');
 
+const listMenu = document.querySelector('#list-section');
+const addBookMenu = document.querySelector('#add-book-section');
+const contactMenu = document.querySelector('#contact-section');
+const listSection = document.querySelector('.main');
+const addBookSection = document.querySelector('.formSection');
+const contactSection = document.querySelector('.contact');
+
 addForm.addEventListener('submit', (event) => {
 	event.preventDefault();
 	Methods.addBook(addTitle.value, addAuthor.value);
@@ -14,4 +21,32 @@ addForm.addEventListener('submit', (event) => {
 	Methods.showBooks();
 });
 
-console.log(Methods.getBookFromStorage());
+listMenu.addEventListener('click', (e) => {
+	e.preventDefault();
+	listSection.style.display = 'block';
+	addBookSection.style.display = 'none';
+	contactSection.style.display = 'none';
+});
+
+addBookMenu.addEventListener('click', (e) => {
+	e.preventDefault();
+	addBookSection.style.display = 'block';
+	listSection.style.display = 'none';
+	contactSection.style.display = 'none';
+});
+
+contactMenu.addEventListener('click', (e) => {
+	e.preventDefault();
+	contactSection.style.display = 'block';
+	listSection.style.display = 'none';
+	addBookSection.style.display = 'none';
+});
+
+window.onload = () => {
+	if (localStorage.getItem('storedBookData') !== null && localStorage.getItem('storedBookData') !== '[]') {
+		Methods.showBooks();
+		listSection.style.display = 'block';
+		addBookSection.style.display = 'none';
+		contactSection.style.display = 'none';
+	}
+};
